@@ -755,6 +755,7 @@ upgrade_release() {
     [ -f ~/.profile ] && source ~/.profile
     set -e
     cd ${DELIVER_TO}/${APP} $SILENCE
+    [ -f ~/.kiex/bin/kiex ] && [ \"$ELIXIR_VERSION\" ] && source $HOME/.kiex/elixirs/elixir-$ELIXIR_VERSION.env
     $_upgrade_command
   "
   __exec_if_defined "post_upgrade_release"
@@ -989,6 +990,7 @@ rebar_generate_appup() {
     [ -f ~/.profile ] && source ~/.profile
     set -e
     cd $DELIVER_TO
+    [ -f ~/.kiex/bin/kiex ] && [ \"$ELIXIR_VERSION\" ] && source $HOME/.kiex/elixirs/elixir-$ELIXIR_VERSION.env
     $REBAR_CMD generate-appups previous_release=${APP}_${_old_version}
   "
 }
@@ -1025,6 +1027,7 @@ rebar_generate_upgrade() {
     [ -f ~/.profile ] && source ~/.profile
     set -e
     cd $DELIVER_TO
+    [ -f ~/.kiex/bin/kiex ] && [ \"$ELIXIR_VERSION\" ] && source $HOME/.kiex/elixirs/elixir-$ELIXIR_VERSION.env
     $REBAR_CMD generate-upgrade previous_release=${APP}_${_old_version}
   "
 }
